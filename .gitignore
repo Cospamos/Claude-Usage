@@ -12,3 +12,6 @@ Thumbs.db
 *.crx
 *.pem
 *.zip
+
+# Local notes
+CLAUDE.md

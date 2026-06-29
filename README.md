@@ -1,5 +1,9 @@
 # Claude Usage Monitor
 
+<p align="center">
+  <img src="icons/icon-128.png" alt="Claude Usage Monitor icon" width="128" height="128">
+</p>
+
 A minimal browser extension that adds a usage indicator button to [claude.ai](https://claude.ai), showing your 5-hour and 7-day rate limits at a glance - without leaving the chat.
 
 ## Features
