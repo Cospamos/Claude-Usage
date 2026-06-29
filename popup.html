@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      width: 256px;
+      padding: 14px 16px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 13px;
+      line-height: 1.4;
+      background: #FAF9F5;
+      color: #141413;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 12px;
+    }
+    .title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #5E5D59;
+    }
+    .refresh {
+      font-size: 11px;
+      color: #87867F;
+      cursor: pointer;
+      user-select: none;
+      background: none;
+      border: none;
+      padding: 0;
+      font-family: inherit;
+      transition: color 0.15s;
+    }
+    .refresh:hover:not(:disabled) { color: #5E5D59; }
+    .refresh:disabled { opacity: 0.35; cursor: default; }
+
+    .row { margin-bottom: 10px; }
+    .row:last-child { margin-bottom: 0; }
+    .row-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+    .label {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #87867F;
+    }
+    .pct {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .bar-bg {
+      height: 3px;
+      border-radius: 2px;
+      background: #E8E6DC;
+      overflow: hidden;
+      margin-bottom: 4px;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 2px;
+      transition: width 0.4s ease;
+    }
+    .reset {
+      font-size: 11px;
+      color: #87867F;
+    }
+    .badge {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 1px 5px;
+      border-radius: 4px;
+      background: rgba(201, 100, 66, 0.12);
+      color: #C96442;
+    }
+    .msg {
+      font-size: 12px;
+      color: #87867F;
+      text-align: center;
+      padding: 6px 0 2px;
+    }
+
+    .footer {
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid #E8E6DC;
+    }
+    .link {
+      font-size: 11px;
+      color: #87867F;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.15s;
+    }
+    .link:hover { color: #5E5D59; }
+
+    @media (prefers-color-scheme: dark) {
+      body { background: #1C1B19; color: #F5F4ED; }
+      .title { color: #87867F; }
+      .refresh:hover:not(:disabled) { color: #E8E6DC; }
+      .bar-bg { background: rgba(232, 230, 220, 0.10); }
+      .footer { border-top-color: rgba(232, 230, 220, 0.10); }
+      .link:hover { color: #E8E6DC; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="title">Usage</span>
+    <button class="refresh" id="refresh" disabled>…</button>
+  </div>
+  <div id="body"><div class="msg">Loading…</div></div>
+  <div class="footer">
+    <span class="link" id="settings-link">View usage settings</span>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

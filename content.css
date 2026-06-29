@@ -1,0 +1,214 @@
+/* ── Wrapper (anchor point) ───────────────────────────────────── */
+#cu-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ── Button — matches Claude's toolbar icon buttons ──────────── */
+#cu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(var(--spacing, 0.25rem) * 8);
+  padding: 0 6px;
+  overflow: hidden;
+  border: none;
+  border-radius: var(--radius-lg, 0.5rem);
+  background: transparent;
+  color: hsl(var(--text-100));
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.4;
+  cursor: pointer;
+  transition-property: color, background-color, opacity;
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  width: 32px;
+}
+
+#cu-btn:hover {
+  background-color: hsl(var(--border-300) / 0.25);
+}
+
+/* ── Popup — anchored to wrapper via position: absolute ──────── */
+#cu-popup {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 0;
+  left: auto;
+  z-index: 10000;
+  width: 256px;
+
+  font-family: var(--font-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  font-size: 13px;
+  line-height: 1.4;
+  color: #141413;
+
+  background: #FAF9F5;
+  border: 1px solid #E8E6DC;
+  border-radius: var(--radius-lg, 0.5rem);
+  padding: 14px 16px;
+  box-shadow: 0 4px 24px rgba(20, 20, 19, 0.10), 0 1px 4px rgba(20, 20, 19, 0.06);
+}
+
+/* Dark mode */
+[data-mode="dark"] #cu-popup,
+html.dark #cu-popup {
+  background: #1C1B19;
+  color: #F5F4ED;
+  border-color: rgba(232, 230, 220, 0.10);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.50), 0 1px 4px rgba(0, 0, 0, 0.30);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-mode="light"]) #cu-popup {
+    background: #1C1B19;
+    color: #F5F4ED;
+    border-color: rgba(232, 230, 220, 0.10);
+  }
+}
+
+/* ── Header (title + refresh) ────────────────────────────────── */
+.cu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+
+.cu-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #5E5D59;
+}
+
+[data-mode="dark"] .cu-title,
+html.dark .cu-title {
+  color: #87867F;
+}
+
+/* ── Refresh ──────────────────────────────────────────────────── */
+.cu-refresh {
+  font-size: 11px;
+  color: #87867F;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.15s;
+}
+
+.cu-refresh:hover {
+  color: #5E5D59;
+}
+
+[data-mode="dark"] .cu-refresh:hover,
+html.dark .cu-refresh:hover {
+  color: #E8E6DC;
+}
+
+.cu-refresh--busy {
+  pointer-events: none;
+  opacity: 0.35;
+}
+
+/* ── Usage rows ──────────────────────────────────────────────── */
+.cu-row {
+  margin-bottom: 10px;
+}
+
+.cu-row:last-child {
+  margin-bottom: 0;
+}
+
+.cu-row-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.cu-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #87867F;
+}
+
+.cu-pct {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.cu-bar-bg {
+  height: 3px;
+  border-radius: 2px;
+  background: #E8E6DC;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+[data-mode="dark"] .cu-bar-bg,
+html.dark .cu-bar-bg {
+  background: rgba(232, 230, 220, 0.10);
+}
+
+.cu-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+.cu-reset {
+  font-size: 11px;
+  color: #87867F;
+}
+
+.cu-badge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: rgba(201, 100, 66, 0.12);
+  color: #C96442;
+}
+
+.cu-msg {
+  font-size: 12px;
+  color: #87867F;
+  text-align: center;
+  padding: 6px 0 2px;
+}
+
+/* ── Footer — "View usage settings" link ─────────────────────── */
+.cu-footer {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #E8E6DC;
+}
+
+[data-mode="dark"] .cu-footer,
+html.dark .cu-footer {
+  border-top-color: rgba(232, 230, 220, 0.10);
+}
+
+.cu-link {
+  font-size: 11px;
+  color: #87867F;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.15s;
+}
+
+.cu-link:hover {
+  color: #5E5D59;
+}
+
+[data-mode="dark"] .cu-link:hover,
+html.dark .cu-link:hover {
+  color: #E8E6DC;
+}

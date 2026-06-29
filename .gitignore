@@ -1,0 +1,14 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Packaging (if you ever build a .crx or .zip for distribution)
+*.crx
+*.pem
+*.zip
